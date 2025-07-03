@@ -1,0 +1,7 @@
+[ Load Cell ]     [ ANPR Camera ]
+     ↓                ↓
+[ C++ Sensor Interface + ANPR (OpenCV) ]
+                ↓
+     [Data Processing & Formatting]
+                ↓
+       [MySQL Database Storage]

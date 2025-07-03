@@ -15,5 +15,6 @@ Hardware components, which I think are required :
 7) A bridge-like cardboard structure to place components 
 8) A laptop to run the database.
 
-Drive folder link for resources;
-https://docs.google.com/document/d/1Pd4jJehQXnoTo-Z7DI6cr0pSGTMJUTLO6f2u-ECZuDM/edit?usp=drive_link
+Drive folder link for resources:
+https://drive.google.com/drive/folders/1ZojaFczBXk5W7ADSzM-1wWxiXNRAAUWV?usp=drive_link
+

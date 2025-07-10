@@ -1,20 +1,73 @@
-# TE-mini-project
-Project about automation in WebBridge
+--------------------------------------------------------------------------------------------------------------------------------------
 
-We are building a solution to replace Human interaction for entries at the Webbridge. It is going to be a very simple System that will be fetching the data, like the weight of the entered vehicle, its number plate details, and time of login into the database at real time. 
+🚗 WebBridge Automation System
 
-I'm looking forward to use c++ (we can use Java also if preferred) for component interactions and fetching, and for the database, we can use MySQL 
 
-Hardware components, which I think are required :
-1) loadcell (Weighbridge)
-2) Microcontroller (to convert Analog values from the load cell to digital values and feed into system)
-3) Camera  (number plate scanner) 
-4) Wires 
-5)battery (5 volts required for the loadcell itself, microcontroller, and camera may need an additional up to 20 volts supply) 
-6) sample weights ( as dummy vehicles of 2kg 5kg etc)
-7) A bridge-like cardboard structure to place components 
-8) A laptop to run the database.
+WebBridge Automation is an innovative solution designed to eliminate manual interaction at a weighbridge checkpoint. This system automates the process of recording vehicle entry details, including:
 
-Drive folder link for resources:
-https://drive.google.com/drive/folders/1ZojaFczBXk5W7ADSzM-1wWxiXNRAAUWV?usp=drive_link
+1) Vehicle weight
+2) Number plate recognition
+3) Timestamp of entry
+
+All data is captured and logged in real-time into a MySQL database, creating a seamless and efficient workflow.
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+🔧 Technology Stack
+
+1) Programming Language: C++ *(Java optional for future enhancement)*
+2) Database: MySQL
+3) Hardware Interface: Microcontroller integration with sensors and peripherals
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Core Functionalities
+
+1. Vehicle Detection
+
+   Captures vehicle entry on a bridge-like platform.
+
+2. Weight Measurement
+
+   Uses a Load Cell to read the vehicle’s weight.
+   Microcontroller converts analog signals to digital and sends them to the system.
+
+3. Number Plate Recognition
+
+   Uses a camera module for license plate scanning.
+   Can be integrated with OpenCV for future enhancement.
+
+4. Real-time Data Logging
+
+   Stores data in a MySQL database with timestamps.
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+⚙️ Hardware Components
+ ------------------------------------------------------------------------------------------
+| Component               | Purpose                                                        |
+| ----------------------- | -------------------------------------------------------------- |
+| 1. Load Cell            | Measures vehicle weight                                        |
+| 2. Microcontroller      | Converts analog weight signals to digital data                 |
+| 3. Camera Module        | Captures number plate image                                    |
+| 4. Wires                | Electrical connections                                         |
+| 5. Battery (5V–20V)     | Powers load cell, microcontroller, and camera                  |
+| 6. Sample Weights       | Used for testing (dummy weights: 2kg, 5kg, etc.)               |
+| 7. Bridge Setup         | Cardboard model to simulate vehicle platform                   |
+| 8. Laptop               | Hosts the database and interface for data processing & storage |
+ ------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+🖥️ Software Architecture
+
+![alt text](<LOAD CELL.png>)
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+## 📷 Preview (Add Screenshots Here)
+
+*Include photos of your hardware setup, GUI, or output screenshots here once ready.*
+
+--------------------------------------------------------------------------------------------------------------------------------------
 

@@ -1,3 +1,17 @@
 {
-    "cmake.sourceDirectory": "/workspaces/TE-mini-project/vehicle_webbridge"
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "testdb",
+            "username": "admin",
+            "database": "testdb"
+        }
+    ]
 }

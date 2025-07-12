@@ -13,7 +13,7 @@
             "intelliSenseMode": "linux-clang-x64"
         },
         {
-            "name": "Linux",
+            "name": "Linux GCC",
             "includePath": [
                 "${workspaceFolder}/**"
             ],

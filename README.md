@@ -1,4 +1,4 @@
-🚗 WebBridge Automation System
+## 🚗 WEB-BRIDGE AUTOMATION SYSTEM
 
 WebBridge Automation is an innovative solution designed to eliminate manual interaction at a weighbridge checkpoint. This system automates the process of recording vehicle entry details, including:
 
@@ -10,7 +10,7 @@ All data is captured and logged in real-time into a MySQL database, creating a s
 
 --------------------------------------------------------------------------------------------------------------------------------------
 
-🔧 Technology Stack
+## 🔧 TECH STACK
 
 1) Programming Language: C++ *(Java optional for future enhancement)*
 2) Database: MySQL
@@ -18,7 +18,7 @@ All data is captured and logged in real-time into a MySQL database, creating a s
 
 --------------------------------------------------------------------------------------------------------------------------------------
 
-🧠 Core Functionalities
+## 🧠 CORE FUNCTIONALITIES
 
 1. Vehicle Detection
 
@@ -40,7 +40,8 @@ All data is captured and logged in real-time into a MySQL database, creating a s
 
 --------------------------------------------------------------------------------------------------------------------------------------
 
-⚙️ Hardware Components
+## ⚙️ HARDWARE COMPONENTS
+
  ------------------------------------------------------------------------------------------
 | Component               | Purpose                                                        |
 | ----------------------- | -------------------------------------------------------------- |
@@ -56,7 +57,7 @@ All data is captured and logged in real-time into a MySQL database, creating a s
 
 --------------------------------------------------------------------------------------------------------------------------------------
 
-🖥️ Software Architecture
+## 🖥️ SOFTWARE ARCHITECTURE
 
 ![alt text](<LOAD CELL.png>)
 

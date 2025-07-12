@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-WEBBRIDGE AUTOMATION SYSTEM
 🚗 WebBridge Automation System
 
 WebBridge Automation is an innovative solution designed to eliminate manual interaction at a weighbridge checkpoint. This system automates the process of recording vehicle entry details, including:
@@ -61,12 +59,6 @@ All data is captured and logged in real-time into a MySQL database, creating a s
 🖥️ Software Architecture
 
 ![alt text](<LOAD CELL.png>)
-
---------------------------------------------------------------------------------------------------------------------------------------
-
-## 📷 Preview (Add Screenshots Here)
-
-*Include photos of your hardware setup, GUI, or output screenshots here once ready.*
 
 --------------------------------------------------------------------------------------------------------------------------------------
 

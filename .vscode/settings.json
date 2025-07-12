@@ -9,9 +9,10 @@
             "server": "localhost",
             "port": 3306,
             "driver": "MySQL",
-            "name": "testdb",
-            "username": "admin",
-            "database": "testdb"
+            "name": "TE PROJECT",
+            "database": "testdb",
+            "username": "root",
+            "askForPassword": true
         }
     ]
 }

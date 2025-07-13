@@ -1,20 +1,3 @@
-#include <cppconn/statement.h>
-#include <cppconn/prepared_statement.h>
-#include <mysql_connection.h>
-#include <mysql_driver.h>
-
-#include <opencv2/opencv.hpp>
-
-#include <iostream>
-
-
-int main() {
-    
-    cv::Mat image(200, 400, CV_8UC3, cv::Scalar(0, 255, 0));
-    cv::putText(image, "OpenCV OK", {50, 100}, cv::FONT_HERSHEY_SIMPLEX, 1, {0,0,0}, 2);
-    cv::imwrite("test_opencv.jpg", image);
-    std::cout << "Image saved using OpenCV.\n";
-
-    // Tested this code in different Codespace working fine 
-    // Finalizing This draft
-}
+// I think we shall work differently on diffrent modules of the system so i have divide it into parts
+// we will combine every component handler at the end of development into main 
+// For now i have completed OpenCV module completly i was workinjg on it quiet long

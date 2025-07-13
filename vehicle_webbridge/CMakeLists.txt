@@ -1,20 +1,22 @@
-cmake_minimum_required(VERSION 3.10)
-project(vehicle_webbridge)
+ cmake_minimum_required(VERSION 3.10)
+project(WebBridgeSystem)
 
 set(CMAKE_CXX_STANDARD 17)
 
 find_package(OpenCV REQUIRED)
-find_package(Boost REQUIRED COMPONENTS system filesystem)
 find_package(Threads REQUIRED)
 
 include_directories(${OpenCV_INCLUDE_DIRS})
-include_directories(/usr/include/mysql)
 
-add_executable(vehicle_webbridge main.cpp)
+add_executable(WebBridgeSystem
+    main.cpp
+    SerialReader.cpp
+    CameraHandler.cpp
+    MySQLHandler.cpp
+)
 
-target_link_libraries(vehicle_webbridge 
-    ${OpenCV_LIBS} 
-    mysqlcppconn 
-    Boost::system 
+target_link_libraries(WebBridgeSystem
+    ${OpenCV_LIBS}
+    mysqlcppconn
     pthread
 )

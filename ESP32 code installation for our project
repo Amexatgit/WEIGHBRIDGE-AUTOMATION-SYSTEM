@@ -1,0 +1,26 @@
+
+// @sameran We have to install this C++ code into the ESP32 to read data from loadceel to amplify using HX711 
+// and send it to the main module in a string format.
+// This has to be done using ardunio IDE.
+
+
+#include "HX711.h"
+
+#define DOUT 4
+#define CLK 5                    // im Setting clk to 5 and every clock in other modules msut also be set to 5
+
+HX711 scale;
+
+void setup() {
+  Serial.begin(9600);
+  scale.begin(DOUT, CLK);
+  scale.set_scale();              // We willl Calibrate it later according to weight caapacity of loadcell
+scale.tare(); 
+}
+
+void loop() {
+  float weight = scale.get_units(10);
+  Serial.print("WEIGHT: ");
+  Serial.println(weight);
+  delay(1000);
+}

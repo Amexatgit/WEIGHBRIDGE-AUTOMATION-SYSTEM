@@ -1,5 +1,5 @@
 // SpongeBob work in here about sql file
-//Made some chnages to the original code by adding try  and catch blocks for error handling
+// Made some changes to the original code by adding try and catch blocks for error handling
 #include "MySQLHandler.h"
 #include <cppconn/prepared_statement.h>
 #include <iostream>

@@ -14,5 +14,6 @@
             "username": "root",
             "askForPassword": true
         }
-    ]
+    ],
+    "cmake.sourceDirectory": "/workspaces/TE-mini-project/vehicle_webbridge"
 }

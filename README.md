@@ -59,7 +59,7 @@ All data is captured and logged in real-time into a MySQL database, creating a s
 
 ## 🖥️ SYSTEM ARCHITECTURE
 
-![alt text](<System Architecture.jpg>)
+![alt text](<LOAD CELL.png>)
 
 --------------------------------------------------------------------------------------------------------------------------------------
 

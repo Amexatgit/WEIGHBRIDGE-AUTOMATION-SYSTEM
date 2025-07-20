@@ -12,6 +12,21 @@
 int main() {
     SerialReader serial("/dev/ttyUSB0", 9600);
     CameraHandler camera;
-   // MysqlHandler file is not complete yet for now avoinding it.
+   MySQLHandler db("localhost", "root", "yourpassword", "vehicle_data");
 
-    while (true) {}
+    while (true) {
+              std::string weightData = serial.readWeight();
+              if (!weightData.empty()) {
+               std::cout << "Weight: " << weightData << std::endl;
+
+             std::string imagePath = camera.captureImage("opencv_image.jpg");
+             std::string timestamp = std::to_string(std::time(nullptr));
+
+             db.insertData(weightData, timestamp, imagePath);
+
+            std::this_thread::sleep_for(std::chrono::seconds(5));
+        }
+    }
+}
+
+    

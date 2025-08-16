@@ -1,4 +1,4 @@
-## 🚗 WEB-BRIDGE AUTOMATION SYSTEM
+## 🚗 WEIGH AUTOMATION SYSTEM
 
 WebBridge Automation is an innovative solution designed to eliminate manual interaction at a weighbridge checkpoint. This system automates the process of recording vehicle entry details, including:
 

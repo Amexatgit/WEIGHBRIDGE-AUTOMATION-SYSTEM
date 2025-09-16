@@ -5,7 +5,7 @@ WebBridge Automation is an innovative solution designed to eliminate manual inte
 1) Vehicle weight
 2) Number plate recognition
 3) Timestamp of entry
-
+ 
 All data is captured and logged in real-time into a MySQL database, creating a seamless and efficient workflow.
 
 --------------------------------------------------------------------------------------------------------------------------------------

@@ -40,6 +40,32 @@ All data is captured and logged in real-time into a MySQL database, creating a s
 
 --------------------------------------------------------------------------------------------------------------------------------------
 
+## Contribution guidlines 
+
+Contributions are welcome! Please fork the repository and submit a pull request for any enhancements or bug fixes.
+
+Star --> Fork --> PR --> Merge
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
 ## ⚙️ HARDWARE COMPONENTS
 
  ------------------------------------------------------------------------------------------

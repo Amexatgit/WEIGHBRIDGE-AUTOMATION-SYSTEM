@@ -78,4 +78,4 @@ Once you submit your PR, maintainers will review your proposal and may ask quest
 
 Congratulations :tada::tada: and thank you for contributing :sparkles:.
 
-Once your PR is merged, your contributions will be publicly visible on the [project repository](https://github.com/martinfrancois/question-driven-talk-assistant).
+Once your PR is merged, your contributions will be publicly visible on the [project repository](https://github.com/Amexatgit/WEIGHBRIDGE-AUTOMATION-SYSTEM).

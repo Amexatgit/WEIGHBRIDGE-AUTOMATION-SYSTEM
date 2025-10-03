@@ -13,6 +13,8 @@ add_executable(WebBridgeSystem
     SerialReader.cpp
     CameraHandler.cpp
     MySQLHandler.cpp
+    CSVHandler.cpp
+    ExcelHandler.cpp
 )
 
 target_link_libraries(WebBridgeSystem

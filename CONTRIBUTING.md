@@ -1,4 +1,4 @@
-# Contributing to Question-Driven Talk Assistant <!-- omit in toc -->
+# Contributing to WEIGHBRIDGE-AUTOMATION-SYSTEM <!-- omit in toc -->
 
 Thank you for taking the time to contribute to my project! :sparkles:
 

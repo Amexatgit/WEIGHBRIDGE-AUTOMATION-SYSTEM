@@ -4,18 +4,19 @@
 
 ## 📋 Table of Contents
 
-- [Overview](#overview)
-- [Features](#features)
-- [Supported Platforms](#supported-platforms)
-- [Technology Stack](#technology-stack)
-- [Data Storage Options](#data-storage-options)
-- [System Architecture](#system-architecture)
-- [Hardware Components](#hardware-components)
-- [Installation & Setup](#installation--setup)
-- [Configuration](#configuration)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- [Overview](#-overview)
+- [Features](#-features)
+- [Supported Platforms](#-comprehensive-platform-support)
+- [Technology Stack](#-technology-stack)
+- [Advanced Data Storage Solutions](#-advanced-data-storage-solutions)
+- [System Architecture](#️-system-architecture)
+- [Hardware Components](#-hardware-components)
+- [Installation & Setup](#-installation--setup)
+- [Configuration](#️-configuration)
+- [Usage Examples](#-usage-examples)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Security](#-security)
 
 ## 🎯 Overview
 

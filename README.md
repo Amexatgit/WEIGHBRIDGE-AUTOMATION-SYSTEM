@@ -83,14 +83,6 @@ The Weighbridge Automation System is designed with cross-platform compatibility 
 | **Arduino Mega 2560** | ✅ Supported | ATmega2560 | 256KB Flash, 8KB RAM, 54 I/O pins | Complex sensor arrays, extensive I/O requirements |
 | **Arduino Due** | ✅ Supported | ARM Cortex-M3 | 84MHz, 96KB RAM, 512KB Flash | High-performance applications |
 
-#### Advanced Microcontrollers
-| Platform | Status | Architecture | Key Features | Development Status |
-|----------|--------|-------------|--------------|-------------------|
-| **STM32F4 Series** | 🔄 Beta Testing | ARM Cortex-M4 | 168MHz, FPU, DSP instructions | Advanced signal processing |
-| **STM32H7 Series** | 🔄 In Development | ARM Cortex-M7 | 480MHz, 1MB RAM, Ethernet | High-performance edge computing |
-| **Nordic nRF52** | 📋 Planned | ARM Cortex-M4F | Bluetooth 5.0, ultra-low power | Battery-operated systems |
-| **Teensy 4.1** | 🔄 In Development | ARM Cortex-M7 | 600MHz, Ethernet, microSD | High-speed data logging |
-
 ### Operating System Compatibility
 
 #### Linux Distributions
@@ -115,16 +107,6 @@ The Weighbridge Automation System is designed with cross-platform compatibility 
 | **macOS Monterey (12.0+)** | ✅ Fully Supported | Intel x86_64, Apple Silicon (M1/M2) | Xcode 13+, Homebrew package management |
 | **macOS Ventura (13.0+)** | ✅ Fully Supported | Intel x86_64, Apple Silicon (M1/M2) | Native Apple Silicon optimization |
 
-### Development Environment Support
-
-#### Integrated Development Environments
-| IDE | Platform Support | Key Features | Recommended Extensions |
-|-----|-----------------|--------------|----------------------|
-| **Visual Studio Code** | Cross-platform | IntelliSense, debugging, Git integration | C/C++, CMake Tools, Arduino |
-| **Arduino IDE 2.0** | Cross-platform | Built-in library manager, serial monitor | ESP32, STM32 board packages |
-| **PlatformIO** | Cross-platform | Multi-platform library management | ESP32, Arduino, STM32 frameworks |
-| **CLion** | Cross-platform | Advanced C++ debugging, CMake integration | Embedded development plugins |
-
 #### Build Systems and Tools
 | Tool | Purpose | Platform Support | Configuration |
 |------|--------|-----------------|---------------|
@@ -134,17 +116,6 @@ The Weighbridge Automation System is designed with cross-platform compatibility 
 | **Docker** | Containerized deployment | Cross-platform | Dockerfile for consistent environments |
 
 ### Hardware Interface Compatibility
-
-#### Communication Protocols
-| Protocol | Supported Platforms | Use Cases | Configuration |
-|----------|-------------------|-----------|---------------|
-| **Serial/UART** | All platforms | Microcontroller communication | Baud rate: 9600-115200 |
-| **I2C** | ESP32, Raspberry Pi, Arduino | Sensor communication | Address: 0x48 (configurable) |
-| **SPI** | ESP32, Raspberry Pi, Arduino | High-speed data transfer | Customizable pins |
-| **GPIO** | All platforms | Digital I/O operations | Configurable pin mapping |
-| **Ethernet** | Raspberry Pi, STM32 | Network connectivity | TCP/IP stack integration |
-| **WiFi** | ESP32, Raspberry Pi | Wireless connectivity | WPA2/WPA3 security |
-| **Bluetooth** | ESP32, Raspberry Pi | Short-range communication | BLE 4.2+ support |
 
 #### Sensor Integration
 | Sensor Type | Supported Platforms | Integration Method | Accuracy |
@@ -183,11 +154,6 @@ The Weighbridge Automation System offers comprehensive data storage capabilities
   - Advanced SQL querying capabilities for complex data analysis
   - Automated backup and recovery mechanisms
   - Real-time data synchronization and replication
-- **Optimal Use Cases**: 
-  - Production environments requiring high reliability
-  - Multi-user access scenarios with role-based permissions
-  - Large-scale deployments with extensive data analytics requirements
-  - Integration with existing enterprise database infrastructure
 - **Configuration Parameters**:
   ```bash
   STORAGE_BACKEND=MYSQL
@@ -206,12 +172,6 @@ The Weighbridge Automation System offers comprehensive data storage capabilities
   - Automatic file rotation based on size or date
   - Header row with field descriptions for easy identification
   - Built-in data validation and error handling
-- **Optimal Use Cases**:
-  - Development and testing environments
-  - Small to medium-scale deployments
-  - Data migration and backup operations
-  - Integration with external data analysis tools
-  - Compliance reporting with audit trail requirements
 - **Configuration Parameters**:
   ```bash
   STORAGE_BACKEND=CSV
@@ -334,16 +294,6 @@ make -j$(nproc)
 sudo make install
 ```
 
-#### Method 3: Docker Installation
-```bash
-# Pull and run the container
-docker pull weighbridge/automation-system:latest
-docker run -d --name weighbridge-system \
-  -p 8080:8080 \
-  -v /dev/ttyUSB0:/dev/ttyUSB0 \
-  -v /data:/app/data \
-  weighbridge/automation-system:latest
-```
 
 ### Platform-Specific Setup
 
@@ -373,15 +323,6 @@ sudo apt install -y python3-picamera python3-opencv
 
 # Configure GPIO
 sudo usermod -a -G gpio $USER
-```
-
-#### STM32 Setup
-```bash
-# Install STM32CubeIDE
-wget https://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-ides/stm32cubeide.html
-
-# Configure project for STM32F4 discovery board
-# Import project: File > Import > STM32 Project from STM32CubeMX
 ```
 
 ## ⚙️ Configuration
@@ -518,16 +459,6 @@ static domain_name_servers=8.8.8.8 8.8.4.4
 | **Jumper Wires** | Male-to-female, various lengths | Electrical connections | Universal |
 | **Breadboard/PCB** | Prototype or custom board | Circuit assembly | Size-dependent |
 
-### Optional Components
-
-| Component | Specification | Purpose | Use Cases |
-|-----------|---------------|---------|-----------|
-| **LCD Display** | 16x2 or 20x4 character | Local data display | Standalone operation |
-| **LED Indicators** | RGB or single-color | Status indication | Visual feedback |
-| **Buzzer** | 5V active buzzer | Audio alerts | Alarm notifications |
-| **SD Card Module** | SPI interface | Local data storage | Offline operation |
-| **Real-time Clock** | DS3231 or similar | Precise timing | Timestamp accuracy |
-| **Temperature Sensor** | DS18B20 or DHT22 | Environmental monitoring | Data correlation |
 
 ### Component Interconnection
 
@@ -580,43 +511,6 @@ CSI Port      |    Camera Module
 ```
 
 ![System Architecture Diagram](LOAD%20CELL.png)
-
-## 📊 Usage Examples
-
-### Basic Operation
-```bash
-# Start the system
-sudo ./weighbridge_system
-
-# Monitor real-time data
-tail -f /var/log/weighbridge.log
-
-# Check system status
-./system_status --health-check
-```
-
-### Data Export
-```bash
-# Export to CSV
-./data_export --format=csv --start-date=2024-01-01 --end-date=2024-01-31
-
-# Generate Excel report
-./data_export --format=excel --template=monthly_report --output=january_2024.xlsx
-
-# Database backup
-./backup_tool --type=full --destination=/backups/weighbridge_backup.sql
-```
-
-### Remote Monitoring
-```bash
-# Start web interface
-./web_interface --port=8080 --bind=0.0.0.0
-
-# API endpoint examples
-curl http://localhost:8080/api/vehicles/latest
-curl http://localhost:8080/api/statistics/daily
-curl http://localhost:8080/api/export/csv?date=2024-01-15
-```
 
 ---
 

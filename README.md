@@ -434,7 +434,29 @@ CSI Port      |    Camera Module
 
 ## 🖥️ System Architecture
 
-### High-Level Architecture
+### Project Structure Overview
+
+The Weighbridge Automation System follows a modular, object-oriented architecture designed for maintainability, scalability, and cross-platform compatibility. The system is organized into distinct layers with clear separation of concerns.
+
+```
+📁 WEIGHBRIDGE-AUTOMATION-SYSTEM/
+├── 📁 vehicle_weighbridge/          # Core C++ application
+│   ├── 📄 main.cpp                  # Application entry point
+│   ├── 📄 CMakeLists.txt            # Build configuration
+│   ├── 📄 DataStorage.h             # Abstract storage interface
+│   ├── 📄 SerialReader.h/.cpp       # Microcontroller communication
+│   ├── 📄 CameraHandler.h/.cpp     # OpenCV image processing
+│   ├── 📄 MySQLHandler.h/.cpp      # MySQL database storage
+│   ├── 📄 CSVHandler.h/.cpp         # CSV file storage
+│   └── 📄 ExcelHandler.h/.cpp      # Excel XML storage
+├── 📄 CREATE-TABLE.sql              # Database schema
+├── 📁 ESP32 installation Code/      # Microcontroller firmware
+└── 📄 Architecture design           # System design reference
+```
+
+### Core Architecture Components
+
+#### 1. **Data Flow Architecture**
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
 │   Load Cell     │    │  Microcontroller│    │  Data Storage   │
@@ -448,15 +470,217 @@ CSI Port      |    Camera Module
                        └─────────────────┘
 ```
 
+#### 2. **Software Architecture Layers**
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Application Layer                       │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌──────────────┐  │
+│  │   main.cpp      │  │  DataStorage    │  │  Threading   │  │
+│  │  (Orchestrator) │  │  (Interface)    │  │  Management  │  │
+│  └─────────────────┘  └─────────────────┘  └──────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────┐
+│                    Service Layer                           │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌──────────────┐  │
+│  │  SerialReader   │  │  CameraHandler   │  │  Storage     │  │
+│  │  (Hardware I/O) │  │  (OpenCV)        │  │  Handlers    │  │
+│  └─────────────────┘  └─────────────────┘  └──────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────┐
+│                    Hardware Layer                          │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌──────────────┐  │
+│  │   Load Cell     │  │   Camera        │  │  Storage     │  │
+│  │   (HX711)       │  │   (USB/CSI)     │  │  (MySQL/CSV) │  │
+│  └─────────────────┘  └─────────────────┘  └──────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### File Relationships and Dependencies
+
+#### **Core Module Dependencies**
+```
+main.cpp
+├── SerialReader.h/.cpp          # Hardware communication
+├── CameraHandler.h/.cpp         # Image processing
+├── DataStorage.h                # Abstract interface
+├── MySQLHandler.h/.cpp         # Database storage
+├── CSVHandler.h/.cpp           # File storage
+└── ExcelHandler.h/.cpp         # Excel storage
+```
+
+#### **Class Hierarchy and Interfaces**
+
+```cpp
+// Abstract Base Class
+DataStorage (Interface)
+├── MySQLHandler : public DataStorage
+├── CSVHandler : public DataStorage
+└── ExcelHandler : public DataStorage
+
+// Hardware Interface Classes
+SerialReader (Hardware Communication)
+CameraHandler (Image Processing)
+```
+
 ### Component Interaction Flow
+
+#### **1. System Initialization**
+```cpp
+// main.cpp - Application startup
+SerialReader serial("/dev/ttyUSB0", 9600);     // Hardware interface
+CameraHandler camera;                          // Image processing
+DataStorage* storage = createStorageBackend(); // Storage abstraction
 ```
-1. Vehicle Detection → Load Cell Reading
-2. Weight Measurement → Data Validation
-3. Camera Capture → Image Processing
-4. License Plate Recognition → Data Extraction
-5. Data Storage → Multiple Format Support
-6. System Logging → Error Handling
+
+#### **2. Data Processing Pipeline**
 ```
+1. Vehicle Detection → SerialReader.readWeight()
+2. Weight Measurement → Data validation and formatting
+3. Camera Capture → CameraHandler.captureImage()
+4. License Plate Recognition → OpenCV image processing
+5. Data Storage → Storage backend selection (MySQL/CSV/Excel)
+6. System Logging → Error handling and monitoring
+```
+
+#### **3. Storage Backend Selection**
+```cpp
+// Environment-based configuration
+if (backend == "CSV") {
+    storage = std::make_unique<CSVHandler>(csvPath);
+} else if (backend == "EXCEL") {
+    storage = std::make_unique<ExcelHandler>(xlsPath);
+} else {
+    storage = std::make_unique<MySQLHandler>(host, user, pass, db);
+}
+```
+
+### Build System Architecture
+
+#### **CMake Configuration**
+```cmake
+# CMakeLists.txt - Build system
+cmake_minimum_required(VERSION 3.10)
+project(WebBridgeSystem)
+
+# Dependencies
+find_package(OpenCV REQUIRED)      # Computer vision
+find_package(Threads REQUIRED)     # Multi-threading
+
+# Source files
+add_executable(WebBridgeSystem
+    main.cpp
+    SerialReader.cpp
+    CameraHandler.cpp
+    MySQLHandler.cpp
+    CSVHandler.cpp
+    ExcelHandler.cpp
+)
+
+# Linking
+target_link_libraries(WebBridgeSystem
+    ${OpenCV_LIBS}     # OpenCV libraries
+    mysqlcppconn       # MySQL connector
+    pthread            # Threading support
+)
+```
+
+### Data Storage Architecture
+
+#### **Storage Interface Design**
+```cpp
+// DataStorage.h - Abstract interface
+class DataStorage {
+public:
+    virtual ~DataStorage() = default;
+    virtual void insertData(const std::string& weight,
+                           const std::string& timestamp,
+                           const std::string& imagePath) = 0;
+};
+```
+
+#### **Storage Implementation Hierarchy**
+```
+DataStorage (Abstract)
+├── MySQLHandler
+│   ├── Database connection management
+│   ├── SQL query execution
+│   └── Transaction handling
+├── CSVHandler
+│   ├── File I/O operations
+│   ├── Data formatting
+│   └── Error handling
+└── ExcelHandler
+    ├── XML generation
+    ├── Excel formatting
+    └── Template support
+```
+
+### Hardware Integration Architecture
+
+#### **Serial Communication Layer**
+```cpp
+// SerialReader.h - Hardware interface
+class SerialReader {
+public:
+    SerialReader(const std::string& port, int baudRate);
+    std::string readWeight();  // Read from load cell via HX711
+private:
+    int fd;  // File descriptor for serial port
+};
+```
+
+#### **Camera Processing Layer**
+```cpp
+// CameraHandler.h - Image processing
+class CameraHandler {
+public:
+    std::string captureImage(const std::string& filename);
+    // OpenCV integration for license plate recognition
+};
+```
+
+### Threading and Concurrency
+
+#### **Multi-threaded Data Processing**
+```cpp
+// main.cpp - Concurrent processing
+while (true) {
+    std::string weightData = serial.readWeight();     // Hardware thread
+    std::string imagePath = camera.captureImage();   // Camera thread
+    storage->insertData(weight, timestamp, imagePath); // Storage thread
+    std::this_thread::sleep_for(std::chrono::seconds(5));
+}
+```
+
+### Configuration Management
+
+#### **Environment-based Configuration**
+```bash
+# Runtime configuration via environment variables
+STORAGE_BACKEND=MYSQL|CSV|EXCEL
+DB_HOST=localhost
+DB_USER=weighbridge_user
+DB_PASS=secure_password
+CSV_PATH=/data/records.csv
+EXCEL_PATH=/reports/data.xml
+```
+
+### Error Handling and Logging
+
+#### **Exception Handling Strategy**
+- **Hardware Layer**: Serial communication error handling
+- **Processing Layer**: OpenCV exception management
+- **Storage Layer**: Database connection and file I/O error handling
+- **Application Layer**: Global exception handling and logging
+
+### Performance Considerations
+
+#### **Optimization Strategies**
+- **Memory Management**: Smart pointers and RAII principles
+- **I/O Operations**: Asynchronous data processing
+- **Database Connections**: Connection pooling and reuse
+- **Image Processing**: OpenCV optimization and caching
 
 ![System Architecture Diagram](LOAD%20CELL.png)
 

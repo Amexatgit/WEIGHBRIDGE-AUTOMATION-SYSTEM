@@ -73,7 +73,7 @@ The Weighbridge Automation System is designed with cross-platform compatibility 
 |----------|--------|-------------|--------------|---------------------|
 | **ESP32** | ✅ Production Ready | 32-bit Xtensa Dual-Core | WiFi/Bluetooth, 240MHz, 520KB RAM | IoT deployments, wireless connectivity |
 | **Raspberry Pi 4B/5** | ✅ Production Ready | ARM Cortex-A72/A76 | 4-8GB RAM, GPIO, Camera Module | Full-featured deployments, edge computing |
-| **Raspberry Pi Zero 2W** | ✅ Production Ready | ARM Cortex-A53 | Compact form factor, WiFi | Cost-effective solutions, space-constrained environments |
+| **raspberry Pi Zero 2W** | ✅ Production Ready | ARM Cortex-A53 | Compact form factor, WiFi | Cost-effective solutions, space-constrained environments |
 
 #### Arduino Ecosystem
 | Platform | Status | Architecture | Key Features | Recommended Use Cases |
@@ -101,7 +101,7 @@ The Weighbridge Automation System is designed with cross-platform compatibility 
 | **Windows Server 2019/2022** | ✅ Supported | x86_64 | Enterprise deployment scenarios |
 | **Windows IoT Core** | 🔄 In Development | ARM64 | Embedded Windows applications |
 
-#### macOS Platforms
+#### macos Platforms
 | Version | Status | Architecture Support | Development Environment |
 |---------|--------|---------------------|----------------------|
 | **macOS Monterey (12.0+)** | ✅ Fully Supported | Intel x86_64, Apple Silicon (M1/M2) | Xcode 13+, Homebrew package management |
@@ -181,7 +181,7 @@ The Weighbridge Automation System offers comprehensive data storage capabilities
   CSV_MAX_SIZE=100MB
   ```
 
-### 3. Microsoft Excel XML Format (Business Integration)
+### 3. Microsoft Excel, XML Format (Business Integration)
 - **Purpose**: Native Microsoft Excel compatibility for seamless business reporting
 - **Key Features**:
   - Direct Excel 2003+ format compatibility without external dependencies

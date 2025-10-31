@@ -312,58 +312,6 @@ arduino-cli compile --fqbn esp32:esp32:esp32 weighbridge_firmware
 arduino-cli upload -p /dev/ttyUSB0 --fqbn esp32:esp32:esp32 weighbridge_firmware
 ```
 
-#### Raspberry Pi Setup
-```bash
-# Enable camera module
-sudo raspi-config
-# Navigate to: Interface Options > Camera > Enable
-
-# Install camera libraries
-sudo apt install -y python3-picamera python3-opencv
-
-# Configure GPIO
-sudo usermod -a -G gpio $USER
-```
-
-## ⚙️ Configuration
-
-### Environment Variables
-
-Create a `.env` file in the project root with the following configuration:
-
-```bash
-# Storage Backend Configuration
-STORAGE_BACKEND=MYSQL  # Options: MYSQL, CSV, EXCEL, HYBRID
-
-# MySQL Configuration (Primary Storage)
-DB_HOST=localhost
-DB_USER=weighbridge_user
-DB_PASS=secure_password_here
-DB_NAME=vehicle_weighbridge_data
-DB_PORT=3306
-
-# CSV Configuration
-CSV_PATH=/data/weighbridge_records.csv
-CSV_DELIMITER=,
-CSV_ENCODING=UTF-8
-CSV_MAX_SIZE=100MB
-
-# Excel Configuration
-EXCEL_PATH=/reports/monthly_data.xlsx
-EXCEL_TEMPLATE=/templates/company_report.xlsx
-EXCEL_SHEET_NAME=Vehicle_Records
-
-# Hardware Configuration
-SERIAL_PORT=/dev/ttyUSB0
-SERIAL_BAUD=9600
-CAMERA_DEVICE=/dev/video0
-LOADCELL_CALIBRATION_FACTOR=2280.0
-
-# System Configuration
-LOG_LEVEL=INFO
-DATA_RETENTION_DAYS=365
-BACKUP_INTERVAL_HOURS=24
-```
 
 ### Database Setup
 
